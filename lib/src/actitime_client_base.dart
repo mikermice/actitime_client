@@ -21,12 +21,16 @@ class ActitimeClient {
   final String basePath;
 
   ActitimeClient(
+      {required this.basicAuth,
+      this.authority = "192.168.0.23:120",
+      this.basePath = '/api/v1'});
+
+  ActitimeClient.credentials(
       {required String username,
       required String password,
       this.authority = "192.168.0.23:120",
-      this.basePath = '/api/v1'}) {
-    basicAuth = base64.encode(utf8.encode("$username:$password"));
-  }
+      this.basePath = '/api/v1'})
+      : basicAuth = base64.encode(utf8.encode("$username:$password"));
 
   Uri _buildPath(String path, [Map<String, dynamic>? queries]) {
     final uriPath = "$basePath/$path".replaceAll("//", "/");

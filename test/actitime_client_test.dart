@@ -2,7 +2,8 @@ import 'package:actitime_client/actitime_client.dart';
 import 'package:test/test.dart';
 
 void main() {
-  final client = ActitimeClient(username: "silvestri", password: "maigab11");
+  final client =
+      ActitimeClient.credentials(username: "silvestri", password: "maigab11");
 
   group("Test customers", () {
     test("Get customers", () async {
